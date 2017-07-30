@@ -132,9 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 1
   rotationSpeed: 0.5
-  pollenReserve: 150
-  pollenPerSec: 80
-  pollenMax: 100
+  pollenReserve: 3
+  pollenPerSec: 1
+  pollenMax: 6
   powerPerc:
     serializedVersion: 2
     m_Curve:

@@ -25,8 +25,21 @@ public class                                        PlantPower : MonoBehaviour
     public Vector3                                  targetForce = Vector3.zero;
     public Vector3                                  forceVelocity = Vector3.zero;
 
+    //hugo
+    PollenManagement                                pM;
+    WaterManagement                                 wM;
+    public float pollenReserve;
+    public float waterReserve;
+
     void                                            Awake()
     {
+        pM = FindObjectOfType<PollenManagement>();
+        pM.SetPollenGauge((int)pollenReserve);
+        wM = FindObjectOfType<WaterManagement>();
+        wM.SetWaterGauge(waterReserve); 
+
+        // fin hugo
+
         int                                         controlledNodes = this.controlledNodes;
 
         this.joints.Add((this.head = this.GetComponentInChildren<HingeJoint2D>()));
@@ -127,8 +140,9 @@ public class                                        PlantPower : MonoBehaviour
             angles.min = -this.elasticity * this.rigidDistribution.Evaluate((float) i / this.joints.Count);
             angles.max = this.elasticity * this.rigidDistribution.Evaluate((float) i / this.joints.Count);
             joint.limits = angles;
-            //motor.motorSpeed = Mathf.Lerp(motor.motorSpeed, 0, 0.02f);
             joint.motor = motor;
         }
+        if (this.controlled) this.Inputs();
+        wM.SetWaterGauge(waterReserve); 
     }
 }
