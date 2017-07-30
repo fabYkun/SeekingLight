@@ -132,7 +132,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 1
   rotationSpeed: 0.5
-  pollenReserve: 3
   pollenPerSec: 1
   pollenMax: 6
   powerPerc:
@@ -153,6 +152,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  bebePlante: {fileID: 1496845113467740, guid: 55e1fde6c7e7a3f4387071bb4743bd91, type: 2}
 --- !u!198 &198530786173137986
 ParticleSystem:
   m_ObjectHideFlags: 1
