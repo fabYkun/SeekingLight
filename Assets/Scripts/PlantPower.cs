@@ -7,8 +7,9 @@ public class                                        PlantPower : MonoBehaviour
     public bool                                     controlled = true; // current plant under control
     public GameObject                               nodePrefab;
     public GameObject                               detachedHeadPrefab;
+    public PlantSkin                                skin;
 
-    public List<HingeJoint2D>                       joints = new List<HingeJoint2D>();
+    private List<HingeJoint2D>                      joints = new List<HingeJoint2D>();
     HingeJoint2D                                    head;
     public int                                      size;
     public float                                    distance = 0.4f;
@@ -34,12 +35,15 @@ public class                                        PlantPower : MonoBehaviour
         HingeJoint2D                                currentJoint;
 
         tmp = Instantiate(nodePrefab, Vector3.zero, Quaternion.identity);
+        tmp.GetComponent<SpriteRenderer>().sprite = this.skin.head;
         tmp.transform.SetParent(this.transform);
-        tmp.transform.position = lastJoint.transform.position + lastJoint.transform.up * distance;
+        tmp.transform.position = lastJoint.transform.position;
+        if (this.joints.Count > 1) tmp.transform.position += lastJoint.transform.up * distance;
         tmp.transform.up = lastJoint.transform.up;
         currentJoint = tmp.GetComponentInChildren<HingeJoint2D>();
         currentJoint.connectedBody = lastJoint.GetComponent<Rigidbody2D>();
         ++controlledNodes; // maybe not
+        lastJoint.GetComponent<SpriteRenderer>().sprite = (this.joints.Count == 1 ? this.skin.sprout : this.skin.stem);
         this.head = currentJoint;
         this.joints.Add(currentJoint);
     }

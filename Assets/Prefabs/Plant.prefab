@@ -107,7 +107,7 @@ MonoBehaviour:
   nodePrefab: {fileID: 1459549531036950, guid: 3ac42c3145f36344c85b3e8ddded7d4d, type: 2}
   detachedHeadPrefab: {fileID: 1840557280703662, guid: 6e7064b7e51302845b17e701a2db2489,
     type: 2}
-  joints: []
+  skin: {fileID: 11400000, guid: b4a8b70277da37c4eba2bfe0afb091dd, type: 2}
   size: 6
   distance: 0.4
   elasticity: 1
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: a690bfc1e214d514185be2acd9066511, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
