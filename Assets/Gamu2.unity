@@ -493,21 +493,89 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 233179822649449594, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
         type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: -3.34
+      propertyPath: powerDistribution.m_Curve.Array.data[0].inSlope
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 233179822649449594, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
         type: 2}
-      propertyPath: m_AutoConfigureConnectedAnchor
+      propertyPath: powerDistribution.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: powerDistribution.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: powerDistribution.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: elasticity
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: maxPower
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
         type: 2}
       propertyPath: distance
-      value: 0.8
+      value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: controlledNodes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: rigidDistribution.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: rigidDistribution.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: rigidDistribution.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: rigidDistribution.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879144229885484, guid: 55e1fde6c7e7a3f4387071bb4743bd91, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879144229885484, guid: 55e1fde6c7e7a3f4387071bb4743bd91, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879144229885484, guid: 55e1fde6c7e7a3f4387071bb4743bd91, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: skin
+      value: 
+      objectReference: {fileID: 11400000, guid: a1bcaf286b00dc94bbc9fb90b47a25df,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55e1fde6c7e7a3f4387071bb4743bd91, type: 2}
   m_IsPrefabParent: 0

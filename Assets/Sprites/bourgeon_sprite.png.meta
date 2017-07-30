@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a690bfc1e214d514185be2acd9066511
-timeCreated: 1501423802
+timeCreated: 1501445715
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -110,10 +110,10 @@ TextureImporter:
       name: Stem
       rect:
         serializedVersion: 2
-        x: 118
-        y: 132
-        width: 23
-        height: 92
+        x: 117
+        y: 187
+        width: 24
+        height: 38
       alignment: 9
       pivot: {x: 0.5, y: 0.064859636}
       border: {x: 0, y: 0, z: 0, w: 0}

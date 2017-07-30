@@ -14,9 +14,9 @@ public class                Seed : MonoBehaviour
         rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    void                    Update() {
+    void                    Update()
+    {
         if (pollenReserve > 0) Propulsion();
-
         Rotation();
     }
 
@@ -24,13 +24,13 @@ public class                Seed : MonoBehaviour
     {
         bool                input = Input.GetButton("Propulse");
 
-        if (input) {
+        if (input)
+        {
             Vector2 adaptedForce = transform.up * powerPerc.Evaluate(pollenReserve/ pollenMax) * thrust;
             print (adaptedForce);
             rb2d.AddForce(adaptedForce);
             pollenReserve -= Time.deltaTime * pollenPerSec;
-            //print (pollenReserve);
-            }
+        }
 
     }
 
