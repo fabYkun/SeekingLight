@@ -17,8 +17,21 @@ public class                                        PlantPower : MonoBehaviour
     public AnimationCurve                           powerDistribution; // force given to manual nodes in descending order
     public float                                    maxPower; // maximal power
 
+    //hugo
+    PollenManagement pM;
+    WaterManagement wM;
+    public float pollenReserve;
+    public float waterReserve;
+
     void                                            Awake()
     {
+        pM = FindObjectOfType<PollenManagement>();
+        pM.SetPollenGauge((int)pollenReserve);
+        wM = FindObjectOfType<WaterManagement>();
+        wM.SetWaterGauge(waterReserve); 
+
+        // fin hugo
+
         int                                         controlledNodes = this.controlledNodes;
 
         this.joints.Add((this.head = this.GetComponentInChildren<HingeJoint2D>()));
@@ -81,5 +94,9 @@ public class                                        PlantPower : MonoBehaviour
     void                                            Update()
     {
         if (this.controlled) this.Inputs();
+        //hugo
+        wM.SetWaterGauge(waterReserve); 
+        //hugo
+
     }
 }

@@ -9,8 +9,10 @@ public class                Seed : MonoBehaviour
     public float            rotationSpeed;
     public float            pollenReserve, pollenPerSec, pollenMax;
     public AnimationCurve   powerPerc;
+    PollenManagement pM;
 
     void                    Start() {
+        pM = FindObjectOfType<PollenManagement>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -26,11 +28,12 @@ public class                Seed : MonoBehaviour
 
         if (input) {
             Vector2 adaptedForce = transform.up * powerPerc.Evaluate(pollenReserve/ pollenMax) * thrust;
-            print (adaptedForce);
+            //print (adaptedForce);
             rb2d.AddForce(adaptedForce);
             pollenReserve -= Time.deltaTime * pollenPerSec;
             //print (pollenReserve);
             }
+        pM.SetPollenGauge((int)pollenReserve);
 
     }
 
