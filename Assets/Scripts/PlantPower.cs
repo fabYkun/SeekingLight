@@ -75,6 +75,7 @@ public class                                        PlantPower : MonoBehaviour
         {
             GameObject leaf = Instantiate(leafPrefab, Vector3.zero, Quaternion.identity);
             leaf.GetComponent<SpriteRenderer>().sprite = (Random.Range(0, 2) % 2 == 0 ? this.skin.leftLeaf : this.skin.rightLeaf);
+            leaf.GetComponent<Leaf>().Initialize(this);
             leaf.transform.parent = currentJoint.transform;
             leaf.transform.localPosition = Vector3.zero;
         }

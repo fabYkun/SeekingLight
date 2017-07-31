@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4804830565124566}
   - component: {fileID: 198530786173137986}
   - component: {fileID: 199011897011237116}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: particles syst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 50776366093114672}
   - component: {fileID: 114733233300417158}
   - component: {fileID: 61561606515056326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PropulsionHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 1
   m_LinearDrag: 0.5
   m_AngularDrag: 5
   m_GravityScale: 0.3
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cacaeefe999f94409c6ea8cab7d929b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 1
+  thrust: 45.83
   rotationSpeed: 0.5
   pollenPerSec: 1
   pollenMax: 6

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4574928086596808}
   - component: {fileID: 114418877486181812}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 212130390111157992}
   - component: {fileID: 50984557112464198}
   - component: {fileID: 233179822649449594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,8 +107,11 @@ MonoBehaviour:
   nodePrefab: {fileID: 1459549531036950, guid: 3ac42c3145f36344c85b3e8ddded7d4d, type: 2}
   detachedHeadPrefab: {fileID: 1840557280703662, guid: 6e7064b7e51302845b17e701a2db2489,
     type: 2}
+  leafPrefab: {fileID: 1870802265973644, guid: 863529cfa3cc97f46ba380b2b4980fd9, type: 2}
   skin: {fileID: 11400000, guid: b4a8b70277da37c4eba2bfe0afb091dd, type: 2}
   size: 6
+  detachHeadSacrifice: 6
+  leafProbability: 27.4
   distance: 0.2
   elasticity: 50
   rigidDistribution:
