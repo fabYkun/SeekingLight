@@ -33,8 +33,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566703036172916}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.24, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.6, y: 8.61, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,13 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719ae7b6a33a7dd48b9bca9ca7d6d2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 20, y: 2, z: 1.5}
+  size: {x: 60, y: 2, z: 1.5}
   waterPrefab: {fileID: 1798850961294092, guid: ea1bebba22a77ba428315fd7125bd75f,
     type: 2}
   pollenPrefab: {fileID: 1172815767134598, guid: d99482a379bb0354ab08394b83f0ceaf,
     type: 2}
   rainAngle: -20
   rainForce: 2
-  waterPercentage: 20
-  pollenPercentage: 10
-  timer: 30
+  waterPercentage: 30
+  pollenPercentage: 15
+  timer: 15
