@@ -54,10 +54,11 @@ public class                                        PlantPower : MonoBehaviour
         this.targetForce = new Vector3(this.powerDistribution.Evaluate(0.33f), this.powerDistribution.Evaluate(0.66f), this.powerDistribution.Evaluate(1));
     }
 
-    void                                            Start() {
+    void                                            Start()
+    {
         pM.SetPollenGauge((int)pollenReserve);
         wM.SetWaterGauge(waterReserve); 
-        }
+    }
 
     public void                                     AddNode()
     {
@@ -75,7 +76,11 @@ public class                                        PlantPower : MonoBehaviour
         currentJoint.connectedBody = lastJoint.GetComponent<Rigidbody2D>();
         ++controlledNodes; // maybe not
         lastJoint.GetComponent<SpriteRenderer>().sprite = (this.joints.Count == 1 ? this.skin.sprout : this.skin.stem);
+        Destroy(lastJoint.GetComponent<PolygonCollider2D>());
+        Destroy(lastJoint.GetComponent<Leaf>());
         this.head = currentJoint;
+        this.head.gameObject.AddComponent<PolygonCollider2D>();
+        this.head.gameObject.AddComponent<Leaf>().Initialize(this);
         this.joints.Add(currentJoint);
         if (Random.Range(0, 100) < this.leafProbability || ++this.noLeafSince > this.maximalLeafGap)
         {

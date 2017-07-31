@@ -6,8 +6,8 @@ public class                        Leaf : MonoBehaviour
 {
     [SerializeField]
     private PlantPower              plant;
-    public float                    waterAmount;
-    public float                    pollenAmount;
+    public float                    waterAmount = 1;
+    public float                    pollenAmount = 1;
 
     public void                     Initialize(PlantPower plant)
     {
