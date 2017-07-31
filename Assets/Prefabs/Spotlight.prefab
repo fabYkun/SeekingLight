@@ -79,7 +79,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1586554515350612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -146,8 +146,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 1, g: 0.98174447, b: 0.7352941, a: 1}
-  m_Intensity: 32
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 4.8
   m_Range: 197.4
   m_SpotAngle: 134.26
   m_CookieSize: 10
@@ -217,4 +217,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   maxtimer: 10
-  unitPerSec: 2
+  unitPerSec: 10
