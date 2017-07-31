@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Grandma.unity
+    guid: 859045879d2315440a5d18216361d71d
+  - enabled: 1
+    path: Assets/Gamu.unity
+    guid: 7362c8a3f6eaabc4db01095ee5cf4851
