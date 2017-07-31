@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075545212029256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.72, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4534180693711512}
@@ -87,7 +87,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -223,6 +223,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca2b85ab75e26649b0be3a1fa2cfa8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathBackground: {fileID: 0}
+  initialDeathBGColor: {r: 0, g: 0, b: 0, a: 0}
+  finalDeathBGColor: {r: 0, g: 0, b: 0, a: 1}
+  deathScreen: {fileID: 0}
+  initialDeathColor: {r: 0, g: 0, b: 0, a: 0}
+  finalDeathColor: {r: 1, g: 1, b: 1, a: 1}
+  fadeTime: 1
+  endWaitingTime: 2
 --- !u!114 &114957859925007394
 MonoBehaviour:
   m_ObjectHideFlags: 1
