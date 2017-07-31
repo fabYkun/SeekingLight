@@ -508,16 +508,6 @@ Prefab:
       propertyPath: wM
       value: 
       objectReference: {fileID: 1776386546}
-    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
-        type: 2}
-      propertyPath: maxSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
-        type: 2}
-      propertyPath: size
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55e1fde6c7e7a3f4387071bb4743bd91, type: 2}
   m_IsPrefabParent: 0

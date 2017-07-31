@@ -13,7 +13,7 @@ public class                                        PlantPower : MonoBehaviour
     private List<HingeJoint2D>                      joints = new List<HingeJoint2D>();
     private HingeJoint2D                            head;
 
-    public int                                      size;
+    public int                                      currentSize;
     public int                                      maxSize;
     public int                                      detachHeadSacrifice = 6;
     [Range(0, 100)]
@@ -35,7 +35,11 @@ public class                                        PlantPower : MonoBehaviour
     private Vector3                                 targetForce = Vector3.zero;
     [SerializeField]
     private Vector3                                 forceVelocity = Vector3.zero;
+    [SerializeField]
+    private Vector3                                 momentum;
+    private Vector3                                 oldPosition = Vector3.zero;
 
+    [Header("Canvas")]
     [SerializeField]
     private PollenManagement                        pM;
     [SerializeField]
@@ -46,10 +50,10 @@ public class                                        PlantPower : MonoBehaviour
     void                                            Awake()
     {
         int                                         controlledNodes = this.controlledNodes;
-
+        int                                         oldCurrentSize = this.currentSize;
 
         this.joints.Add((this.head = this.GetComponentInChildren<HingeJoint2D>()));
-        for (int i = 0; i < size; ++i)
+        for (int i = 0; i < oldCurrentSize; ++i)
             AddNode();
         this.controlledNodes = controlledNodes; // to modify
         this.targetForce = new Vector3(this.powerDistribution.Evaluate(0.33f), this.powerDistribution.Evaluate(0.66f), this.powerDistribution.Evaluate(1));
@@ -67,7 +71,7 @@ public class                                        PlantPower : MonoBehaviour
         HingeJoint2D                                lastJoint = this.joints[this.joints.Count - 1];
         HingeJoint2D                                currentJoint;
 
-        if (this.size + 1 > this.maxSize) return;
+        if (this.currentSize + 1 > this.maxSize) return;
         tmp = Instantiate(nodePrefab, Vector3.zero, Quaternion.identity);
         tmp.GetComponent<SpriteRenderer>().sprite = this.skin.head;
         tmp.transform.SetParent(this.transform);
@@ -93,7 +97,7 @@ public class                                        PlantPower : MonoBehaviour
             leaf.transform.localPosition = Vector3.zero;
             this.noLeafSince = 0;
         }
-        ++this.size;
+        ++this.currentSize;
     }
 
     IEnumerator                                     scaleUp(Transform transform, Vector3 from, Vector3 to, float duration)
@@ -181,6 +185,12 @@ public class                                        PlantPower : MonoBehaviour
         }
         wM.SetWaterGauge(waterReserve);
         Danse();
+    }
+
+    void                                            LateUpdate()
+    {
+        this.momentum = this.transform.position - this.oldPosition;
+        this.oldPosition = this.transform.position;
     }
 
     public void                                     Initialize(WaterManagement waMa, PollenManagement PoMa)
