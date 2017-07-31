@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496845113467740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 15.85, y: -2.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4879144229885484}
@@ -108,10 +108,33 @@ MonoBehaviour:
   detachedHeadPrefab: {fileID: 1840557280703662, guid: 6e7064b7e51302845b17e701a2db2489,
     type: 2}
   leafPrefab: {fileID: 1870802265973644, guid: 863529cfa3cc97f46ba380b2b4980fd9, type: 2}
+  defaultSkin: {fileID: 11400000, guid: b4a8b70277da37c4eba2bfe0afb091dd, type: 2}
+  upgradeSkins:
+  - {fileID: 11400000, guid: a1bcaf286b00dc94bbc9fb90b47a25df, type: 2}
+  - {fileID: 11400000, guid: 37884a2652348dd4cafa745ca68a92f5, type: 2}
   skin: {fileID: 11400000, guid: b4a8b70277da37c4eba2bfe0afb091dd, type: 2}
   currentSize: 3
   maxSize: 30
   detachHeadSacrifice: 6
+  waterConsumptionPerSec: 1.5
+  maxSizeRatioWaterConsumtion:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
   leafProbability: 27.4
   maximalLeafGap: 5
   distance: 0.2
@@ -159,10 +182,10 @@ MonoBehaviour:
   targetForce: {x: 0, y: 0, z: 0}
   forceVelocity: {x: 0, y: 0, z: 0}
   momentum: {x: 0, y: 0, z: 0}
-  pM: {fileID: 0}
-  wM: {fileID: 0}
-  pollenReserve: 3
-  waterReserve: 0
+  pollenGauge: {fileID: 0}
+  waterGauge: {fileID: 0}
+  pollenReserve: 30
+  waterReserve: 50
 --- !u!212 &212130390111157992
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -219,7 +242,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -4}
+  m_ConnectedAnchor: {x: 15.85, y: -2.97}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

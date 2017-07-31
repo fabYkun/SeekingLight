@@ -6,12 +6,12 @@ public class                Seed: MonoBehaviour
 {
     Rigidbody2D             rb2d;
     public float            thrust;
-    public float            rotationSpeed, pollenPerSec, pollenMax=6;
+    public float            rotationSpeed, pollenPerSec;
     private float           pollenReserve;
     private float           waterReserve;
-    public AnimationCurve   powerPerc;
     CollectibleManagement   pollenGauge;
     CollectibleManagement   waterGauge;
+    private bool            hasGerminated = false;
 
     PlantPower              pP;
     Camera                  cam;
@@ -20,7 +20,8 @@ public class                Seed: MonoBehaviour
     void                    Start()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D> ( );
-        cam = FindObjectOfType<Camera>();
+        cam = Camera.instance;
+        cam.adjust = new Vector3(3, 0, 0);
     }
 
     void                    Update()
@@ -37,7 +38,7 @@ public class                Seed: MonoBehaviour
 
         if (input)
         {
-            Vector2         adaptedForce = transform.up * powerPerc.Evaluate (pollenReserve/ pollenMax) * thrust;
+            Vector2         adaptedForce = transform.up * thrust;
             //print (adaptedForce);
             rb2d.AddForce (adaptedForce);
             pollenReserve -= Time.deltaTime * pollenPerSec;
@@ -64,13 +65,17 @@ public class                Seed: MonoBehaviour
 
     void                    OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "terre")
+        if (col.gameObject.tag == "terre" && !this.hasGerminated)
         {
-            print("entered");
-            GameObject tmp = Instantiate(bebePlante, transform.position, bebePlante.transform.rotation);
+            GameObject tmp = Instantiate(bebePlante, transform.position, Quaternion.identity);
             tmp.GetComponent<PlantPower>().Initialize(this.waterGauge, this.pollenGauge);
-            DestroyObject(gameObject);
+            Destroy(this.gameObject);
+            this.hasGerminated = true;
         }
-        else print("GAMEOVER BECAUSE OF PAS FERTILE");
+        else if (this.pollenReserve <= 0)
+        {
+            this.pP.controlled = true;
+            Destroy(this.gameObject);
+        }
     }
 }

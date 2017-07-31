@@ -8,6 +8,8 @@ public class                                        PlantPower : MonoBehaviour
     public GameObject                               nodePrefab;
     public GameObject                               detachedHeadPrefab;
     public GameObject                               leafPrefab;
+    public PlantSkin                                defaultSkin;
+    public PlantSkin[]                              upgradeSkins;
     public PlantSkin                                skin;
 
     private List<HingeJoint2D>                      joints = new List<HingeJoint2D>();
@@ -16,16 +18,27 @@ public class                                        PlantPower : MonoBehaviour
     public int                                      currentSize;
     public int                                      maxSize;
     public int                                      detachHeadSacrifice = 6;
-    [Range(0, 100)]
+
+    [Tooltip("water consumption factor")]
+    public float                                    waterConsumptionPerSec = 0.5f;
+    [Tooltip("size-related water consumption, x = 0 = size 0 and x = 1 = maxSize")]
+    public AnimationCurve                           maxSizeRatioWaterConsumtion;
+
+    [Range(0, 100), Tooltip("Bonus leafs rate")]
     public float                                    leafProbability = 25;
     private int                                     noLeafSince = 0;
     public int                                      maximalLeafGap = 5;
+    [Tooltip("distance between each node")]
     public float                                    distance = 0.4f;
+    [Tooltip("widest angle used on the nodes")]
     public float                                    elasticity = 60;
     public AnimationCurve                           rigidDistribution;
-    public int                                      controlledNodes = 1;    // number of nodes you actually control
-    public AnimationCurve                           powerDistribution;      // force given to manual nodes in descending order
-    public float                                    maxPower;               // maximal power
+    [Tooltip("number of nodes you actually control")]
+    public int                                      controlledNodes = 1;
+    [Tooltip("force given to manual nodes in descending order")]
+    public AnimationCurve                           powerDistribution;
+    [Tooltip("power corresponding to Y(x) = 1 on the powerDistribution")]
+    public float                                    maxPower;
 
     [Header("Force attributes")]
     public float                                    swapDelay = 0.1f;
@@ -37,6 +50,8 @@ public class                                        PlantPower : MonoBehaviour
     private Vector3                                 forceVelocity = Vector3.zero;
     [SerializeField]
     private Vector3                                 momentum;
+    [Tooltip("when detached the head will keep the momentum of the plant, this factor exagerates it")]
+    public float                                    momentumFactor;
     private Vector3                                 oldPosition = Vector3.zero;
 
     [Header("Canvas")]
@@ -50,6 +65,7 @@ public class                                        PlantPower : MonoBehaviour
         int                                         controlledNodes = this.controlledNodes;
         int                                         oldCurrentSize = this.currentSize;
 
+        this.skin = this.defaultSkin;
         this.currentSize = 0;
         this.joints.Add((this.head = this.GetComponentInChildren<HingeJoint2D>()));
         for (int i = 0; i < oldCurrentSize; ++i)
@@ -60,6 +76,7 @@ public class                                        PlantPower : MonoBehaviour
 
     void                                            Start()
     {
+        GameOver.instance.plant = this;
         this.pollenGauge.SetGauge((int)pollenReserve);
         this.waterGauge.SetGauge(waterReserve); 
     }
@@ -97,6 +114,7 @@ public class                                        PlantPower : MonoBehaviour
             this.noLeafSince = 0;
         }
         ++this.currentSize;
+        this.SkinMutation();
     }
 
     IEnumerator                                     scaleUp(Transform transform, Vector3 from, Vector3 to, float duration)
@@ -114,45 +132,63 @@ public class                                        PlantPower : MonoBehaviour
     public void                                     DetachHead()
     {
         HingeJoint2D                                lastJoint;
-        HingeJoint2D                                newLastJoint;
         GameObject                                  detachedHead;
 
         if (this.currentSize < detachHeadSacrifice + 2) return;
+        detachedHead = Instantiate(detachedHeadPrefab, this.head.transform.position, Quaternion.identity);
+        detachedHead.transform.up = this.head.transform.up;
+        detachedHead.GetComponent<Rigidbody2D>().AddForce(this.momentum * 4, ForceMode2D.Impulse);
         for (int i = 0; i < detachHeadSacrifice; ++i)
         {
             lastJoint = this.joints[this.joints.Count - 1];
             this.joints.RemoveAt(this.joints.Count - 1);
             --this.controlledNodes;
+            --this.currentSize;
             Destroy(lastJoint.gameObject);
         }
-        newLastJoint = this.joints[this.joints.Count - 1];
-        newLastJoint.GetComponent<SpriteRenderer>().sprite = this.skin.head;
-        StartCoroutine(scaleUp(newLastJoint.transform, new Vector3(0.2f, 0.2f), Vector3.one, 2));
-        detachedHead = Instantiate(detachedHeadPrefab, this.head.transform.position, Quaternion.identity);
+        this.head = this.joints[this.joints.Count - 1];
+        this.head.GetComponent<SpriteRenderer>().sprite = this.skin.head;
+        StartCoroutine(scaleUp(this.head.transform, this.head.transform.localScale, Vector3.one, 2));
         detachedHead.GetComponent<Seed>().Initialize(this);
         this.pollenReserve = 0;
-        detachedHead.transform.up = this.head.transform.up;
         this.controlled = false;
+        this.SkinMutation();
     }
     
     void                                            Inputs()
     {
-        if (Input.GetButtonDown("Spawn"))
-            this.AddNode();
-        else if (Input.GetButtonDown("Propulse"))
-            this.DetachHead();
-
         if (Input.GetButton("Left"))
             this.currentForce = Vector3.SmoothDamp(this.currentForce, -this.targetForce, ref this.forceVelocity, this.swapDelay);
         else if (Input.GetButton("Right"))
             this.currentForce = Vector3.SmoothDamp(this.currentForce, this.targetForce, ref this.forceVelocity, this.swapDelay);
         else
             this.currentForce = Vector3.SmoothDamp(this.currentForce, Vector3.zero, ref this.forceVelocity, this.swapDelay);
+
+        if (Input.GetButtonDown("Spawn"))
+            this.AddNode();
+        else if (Input.GetButtonDown("Propulse"))
+            this.DetachHead();
+    }
+    
+    void                                            SkinMutation()
+    {
+        PlantSkin                                   bestSkin = this.defaultSkin;
+
+        for (int i = 0; i < this.upgradeSkins.Length; ++i)
+            if (this.upgradeSkins[i].minLength < this.currentSize && this.upgradeSkins[i].minLength > bestSkin.minLength)
+                bestSkin = this.upgradeSkins[i];
+        this.skin = bestSkin;
     }
 
     void                                            Update()
     {
-        if (this.controlled) this.Inputs();
+        this.waterReserve -= this.waterConsumptionPerSec * Time.deltaTime * this.maxSizeRatioWaterConsumtion.Evaluate(this.currentSize / this.maxSize);
+        if (this.controlled == true)
+        {
+            this.Inputs();
+            Camera.instance.Follow(this.transform);
+            Camera.instance.adjust = new Vector3(0, 3, 0);
+        }
     }
 
     void                                            Danse()
@@ -191,8 +227,8 @@ public class                                        PlantPower : MonoBehaviour
         if (!this.controlled) return;
         this.waterGauge.SetGauge(waterReserve);
         this.pollenGauge.SetGauge(pollenReserve);
-        this.momentum = this.transform.position - this.oldPosition;
-        this.oldPosition = this.transform.position;
+        this.momentum = this.head.transform.position - this.oldPosition;
+        this.oldPosition = this.head.transform.position;
     }
 
     public void                                     Initialize(CollectibleManagement waterGauge, CollectibleManagement pollenGauge)

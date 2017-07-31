@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class                        GameOver: MonoBehaviour
 {
+    public static GameOver          instance;
+
     public Image                    deathBackground;
     public Color                    initialDeathBGColor;
     public Color                    finalDeathBGColor;
@@ -14,11 +16,21 @@ public class                        GameOver: MonoBehaviour
     public Color                    finalDeathColor;
     public float                    fadeTime = 2;
     public float                    endWaitingTime = 1;
+    public PlantPower               plant;
+
+    public void                     Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            GameObject.Destroy(this.gameObject);
+    }
 
     IEnumerator                     fadeDeath()
     {
         float                       time = 0;
 
+        this.plant.controlled = false;
         while (time < this.fadeTime)
         {
             time += Time.deltaTime;
@@ -35,9 +47,14 @@ public class                        GameOver: MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void                     LaunchGameover()
+    {
+        StartCoroutine(fadeDeath());
+    }
+
     void                            OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "gameOver")
-            StartCoroutine(fadeDeath());
+            this.LaunchGameover();
     }
 }

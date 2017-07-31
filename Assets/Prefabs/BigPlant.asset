@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9239a11b137d9ab4fbd7a7ab0b410d9c, type: 3}
   m_Name: BigPlant
   m_EditorClassIdentifier: 
+  minLength: 10
   head: {fileID: 21300000, guid: fab3ef6fe7dbc1543b6cd52e3db36565, type: 3}
   sprout: {fileID: 21300006, guid: 7aa82caa1aab93748b0d8f6681556761, type: 3}
-  stem: {fileID: 21300008, guid: 7aa82caa1aab93748b0d8f6681556761, type: 3}
-  leftLeaf: {fileID: 0}
-  rightLeaf: {fileID: 0}
+  stem: {fileID: 21300004, guid: a690bfc1e214d514185be2acd9066511, type: 3}
+  leftLeaf: {fileID: 21300002, guid: 7aa82caa1aab93748b0d8f6681556761, type: 3}
+  rightLeaf: {fileID: 21300004, guid: 7aa82caa1aab93748b0d8f6681556761, type: 3}
