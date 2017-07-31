@@ -14,10 +14,10 @@ public class                        Leaf : MonoBehaviour
         this.plant = plant;
     }
 
-    void                            OnTriggerEnter2D(Collider2D collider)
+    void                            OnCollisionEnter2D(Collision2D collider)
     {
-        if (collider.CompareTag("collectiblePollen")) this.plant.pollenReserve += this.pollenAmount;
-        if (collider.CompareTag("collectibleWater")) this.plant.waterReserve += this.waterAmount;
-        Destroy(collider.gameObject);
+        if (collider.gameObject.CompareTag("collectiblePollen")) this.plant.pollenReserve += this.pollenAmount;
+        if (collider.gameObject.CompareTag("collectibleWater")) this.plant.waterReserve += this.waterAmount;
+        if (collider.gameObject.CompareTag("collectiblePollen") || collider.gameObject.CompareTag("collectibleWater")) Destroy(collider.gameObject);
     }
 }

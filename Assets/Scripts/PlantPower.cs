@@ -17,6 +17,8 @@ public class                                        PlantPower : MonoBehaviour
     public int                                      detachHeadSacrifice = 6;
     [Range(0, 100)]
     public float                                    leafProbability = 25;
+    private int                                     noLeafSince = 0;
+    public int                                      maximalLeafGap = 5;
     public float                                    distance = 0.4f;
     public float                                    elasticity = 60;
     public AnimationCurve                           rigidDistribution;
@@ -71,13 +73,14 @@ public class                                        PlantPower : MonoBehaviour
         lastJoint.GetComponent<SpriteRenderer>().sprite = (this.joints.Count == 1 ? this.skin.sprout : this.skin.stem);
         this.head = currentJoint;
         this.joints.Add(currentJoint);
-        if (Random.Range(0, 100) < this.leafProbability)
+        if (Random.Range(0, 100) < this.leafProbability || ++this.noLeafSince > this.maximalLeafGap)
         {
             GameObject leaf = Instantiate(leafPrefab, Vector3.zero, Quaternion.identity);
             leaf.GetComponent<SpriteRenderer>().sprite = (Random.Range(0, 2) % 2 == 0 ? this.skin.leftLeaf : this.skin.rightLeaf);
             leaf.GetComponent<Leaf>().Initialize(this);
             leaf.transform.parent = currentJoint.transform;
             leaf.transform.localPosition = Vector3.zero;
+            this.noLeafSince = 0;
         }
     }
 
@@ -103,6 +106,7 @@ public class                                        PlantPower : MonoBehaviour
         {
             lastJoint = this.joints[this.joints.Count - 1];
             this.joints.RemoveAt(this.joints.Count - 1);
+            --this.controlledNodes;
             Destroy(lastJoint.gameObject);
         }
         newLastJoint = this.joints[this.joints.Count - 1];
@@ -117,10 +121,6 @@ public class                                        PlantPower : MonoBehaviour
     
     void                                            Inputs()
     {
-        int                                     j = 0;
-        int                                     firstTier = controlledNodes / 3;
-        int                                     secondTier = firstTier * 2;
-
         if (Input.GetButtonDown("Spawn"))
             this.AddNode();
         else if (Input.GetButtonDown("Propulse"))
@@ -132,6 +132,18 @@ public class                                        PlantPower : MonoBehaviour
             this.currentForce = Vector3.SmoothDamp(this.currentForce, this.targetForce, ref this.forceVelocity, this.swapDelay);
         else
             this.currentForce = Vector3.SmoothDamp(this.currentForce, Vector3.zero, ref this.forceVelocity, this.swapDelay);
+    }
+
+    void                                            Update()
+    {
+        if (this.controlled) this.Inputs();
+    }
+
+    void                                            Danse()
+    {
+        int                                         j = 0;
+        int                                         firstTier = controlledNodes / 3;
+        int                                         secondTier = firstTier * 2;
         for (int i = this.joints.Count - controlledNodes; i < this.joints.Count; ++i)
         {
             ++j;
@@ -140,11 +152,6 @@ public class                                        PlantPower : MonoBehaviour
             motor.motorSpeed = ((j < firstTier) ? this.currentForce.x : ((j < secondTier) ? this.currentForce.y : this.currentForce.z)) * this.maxPower;
             joint.motor = motor;
         }
-    }
-
-    void                                            Update()
-    {
-        if (this.controlled) this.Inputs();
     }
 
     void                                            FixedUpdate()
@@ -160,7 +167,7 @@ public class                                        PlantPower : MonoBehaviour
             joint.limits = angles;
             joint.motor = motor;
         }
-        if (this.controlled) this.Inputs();
-        wM.SetWaterGauge(waterReserve); 
+        wM.SetWaterGauge(waterReserve);
+        Danse();
     }
 }
