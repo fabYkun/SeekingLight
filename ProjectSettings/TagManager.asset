@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - gameOver
+  - terre
+  - eau
+  - pierre
+  - collectibleWater
+  - collectiblePollen
   layers:
   - Default
   - TransparentFX

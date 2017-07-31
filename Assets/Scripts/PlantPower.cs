@@ -108,6 +108,8 @@ public class                                        PlantPower : MonoBehaviour
         newLastJoint.GetComponent<SpriteRenderer>().sprite = this.skin.head;
         StartCoroutine(scaleUp(newLastJoint.transform, new Vector3(0.2f, 0.2f), Vector3.one, 2));
         detachedHead = Instantiate(detachedHeadPrefab, this.head.transform.position, Quaternion.identity);
+        detachedHead.GetComponent<Seed>().Initialize(this);
+        this.pollenReserve = 0;
         detachedHead.transform.up = this.head.transform.up;
         this.controlled = false;
     }
