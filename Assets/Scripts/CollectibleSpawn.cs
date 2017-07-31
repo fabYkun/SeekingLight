@@ -18,6 +18,7 @@ public class                    CollectibleSpawn : MonoBehaviour
     private float               waterPercentage;
     [SerializeField]
     private float               pollenPercentage;
+    public float timer;
 
     void                        OnDrawGizmos()
     {
@@ -41,7 +42,7 @@ public class                    CollectibleSpawn : MonoBehaviour
         {
             collectibles[i].transform.Rotate(Vector3.forward * this.rainAngle);
             collectibles[i].GetComponent<Rigidbody2D>().AddForce(collectibles[i].gameObject.transform.up * rainForce * - 1, ForceMode2D.Impulse);
-            Destroy(collectibles[i], 5f);
+            Destroy(collectibles[i], timer);
         }
     }
 }

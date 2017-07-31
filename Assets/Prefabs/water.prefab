@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212296036938081510}
   - component: {fileID: 61475562506001504}
   - component: {fileID: 50151199790464612}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: water
   m_TagString: collectibleWater
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0.5
   m_Material: {fileID: 0}
