@@ -9,18 +9,25 @@ public class Seed: MonoBehaviour {
     private float           pollenReserve;
     public AnimationCurve   powerPerc;
     PollenManagement        pM;
+    WaterManagement         wM;
+
     PlantPower              pP;
+    Camera                  cam;
     public GameObject       bebePlante;
 
     void Start ( ) {
         pM = FindObjectOfType<PollenManagement> ( );
+        wM = FindObjectOfType<WaterManagement> ( );
+
         rb2d = gameObject.GetComponent<Rigidbody2D> ( );
+        cam = FindObjectOfType<Camera>();
         }
 
     void Update ( ) {
         if ( pollenReserve > 0 )
             Propulsion ( );
         Rotation ( );
+        cam.Follow(gameObject.transform);
         }
 
     void Propulsion ( ) {
@@ -50,7 +57,8 @@ public class Seed: MonoBehaviour {
     void OnCollisionEnter2D(Collision2D col) {
         if(col.gameObject.tag == "terre") {
             print("entered");
-            Instantiate(bebePlante, transform.position, bebePlante.transform.rotation);
+            GameObject tmp = Instantiate(bebePlante, transform.position, bebePlante.transform.rotation);
+            tmp.GetComponent<PlantPower>().Initialize(wM, pM);
             DestroyObject(gameObject);
             }
         else print("GAMEOVER BECAUSE OF PAS FERTILE");

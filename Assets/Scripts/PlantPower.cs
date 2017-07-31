@@ -44,14 +44,18 @@ public class                                        PlantPower : MonoBehaviour
     {
         int                                         controlledNodes = this.controlledNodes;
 
-        pM.SetPollenGauge((int)pollenReserve);
-        wM.SetWaterGauge(waterReserve); 
+
         this.joints.Add((this.head = this.GetComponentInChildren<HingeJoint2D>()));
         for (int i = 0; i < size; ++i)
             AddNode();
         this.controlledNodes = controlledNodes; // to modify
         this.targetForce = new Vector3(this.powerDistribution.Evaluate(0.33f), this.powerDistribution.Evaluate(0.66f), this.powerDistribution.Evaluate(1));
     }
+
+    void                                            Start() {
+        pM.SetPollenGauge((int)pollenReserve);
+        wM.SetWaterGauge(waterReserve); 
+        }
 
     public void                                     AddNode()
     {
@@ -102,6 +106,7 @@ public class                                        PlantPower : MonoBehaviour
         {
             lastJoint = this.joints[this.joints.Count - 1];
             this.joints.RemoveAt(this.joints.Count - 1);
+            -- controlledNodes;
             Destroy(lastJoint.gameObject);
         }
         newLastJoint = this.joints[this.joints.Count - 1];
@@ -159,7 +164,11 @@ public class                                        PlantPower : MonoBehaviour
             joint.limits = angles;
             joint.motor = motor;
         }
-        if (this.controlled) this.Inputs();
         wM.SetWaterGauge(waterReserve); 
     }
+
+    public void                                     Initialize(WaterManagement waMa, PollenManagement PoMa ) {
+            pM = PoMa;
+            wM = waMa;
+        }
 }
