@@ -127,31 +127,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1840557280703662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cacaeefe999f94409c6ea8cab7d929b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ac88a1d1e6196642bd09a42996ccc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 0.1
   rotationSpeed: 0.025
-  pollenPerSec: 1
-  pollenMax: 6
-  powerPerc:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  pollenPerSec: 25
   bebePlante: {fileID: 1496845113467740, guid: 55e1fde6c7e7a3f4387071bb4743bd91, type: 2}
 --- !u!198 &198530786173137986
 ParticleSystem:
@@ -212,7 +193,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -523582611
+  randomSeed: -945663897
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3480,7 +3461,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9114e7f1798d160438f29b197380c916, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
