@@ -10505,7 +10505,7 @@ Transform:
   - {fileID: 637478012}
   - {fileID: 1678721393}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &430278659
 Prefab:
@@ -17109,7 +17109,7 @@ Transform:
   - {fileID: 541772712}
   - {fileID: 1369820561}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &635804884
 Prefab:
@@ -20662,7 +20662,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4574928086596808, guid: 55e1fde6c7e7a3f4387071bb4743bd91, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
         type: 2}
@@ -24537,7 +24537,7 @@ RectTransform:
   - {fileID: 783719771}
   - {fileID: 583003353}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -26379,7 +26379,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &993875877
 Prefab:
@@ -39763,7 +39763,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4477198813286660, guid: 30aec0c63370aa643a373ffb14511293, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1266254439502770, guid: 30aec0c63370aa643a373ffb14511293, type: 2}
       propertyPath: m_Name
@@ -40091,7 +40091,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4477198813286660, guid: 30aec0c63370aa643a373ffb14511293, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1266254439502770, guid: 30aec0c63370aa643a373ffb14511293, type: 2}
       propertyPath: m_Name
