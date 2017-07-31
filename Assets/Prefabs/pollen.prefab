@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212525308191197396}
   - component: {fileID: 61582433774608446}
   - component: {fileID: 50956649436986718}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: pollen
   m_TagString: collectiblePollen
   m_Icon: {fileID: 0}

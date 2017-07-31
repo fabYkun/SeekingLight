@@ -36,7 +36,7 @@ public class Seed: MonoBehaviour {
         if ( input ) {
             Vector2 adaptedForce = transform.up * powerPerc.Evaluate (pollenReserve/ pollenMax) * thrust;
             //print (adaptedForce);
-            rb2d.AddForce (adaptedForce);
+            rb2d.AddForce (adaptedForce); 
             pollenReserve -= Time.deltaTime * pollenPerSec;
             }
         pM.SetPollenGauge ((int)pollenReserve);
@@ -61,6 +61,7 @@ public class Seed: MonoBehaviour {
             tmp.GetComponent<PlantPower>().Initialize(wM, pM);
             DestroyObject(gameObject);
             }
+        else if(col.gameObject.tag == "pierre") { }
         else print("GAMEOVER BECAUSE OF PAS FERTILE");
         }
     }

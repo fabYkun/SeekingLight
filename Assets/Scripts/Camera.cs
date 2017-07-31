@@ -12,7 +12,7 @@ public class Camera : MonoBehaviour {
 	}
 	
     public void Follow(Transform cible){
-        Vector3 ciblasse = new Vector3(cible.transform.position. x, cible.transform.position.y, transform.position.z);
+        Vector3 ciblasse = new Vector3(cible.transform.position. x, cible.transform.position.y, transform.position.z) + adjust;
         transform.position = Vector3.MoveTowards(transform.position, ciblasse , step);
         }
 }
