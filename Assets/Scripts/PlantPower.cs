@@ -40,10 +40,8 @@ public class                                        PlantPower : MonoBehaviour
     private Vector3                                 oldPosition = Vector3.zero;
 
     [Header("Canvas")]
-    [SerializeField]
-    private PollenManagement                        pM;
-    [SerializeField]
-    private WaterManagement                         wM;
+    public CollectibleManagement                    pollenGauge;
+    public CollectibleManagement                    waterGauge;
     public float                                    pollenReserve;
     public float                                    waterReserve;
 
@@ -52,6 +50,7 @@ public class                                        PlantPower : MonoBehaviour
         int                                         controlledNodes = this.controlledNodes;
         int                                         oldCurrentSize = this.currentSize;
 
+        this.currentSize = 0;
         this.joints.Add((this.head = this.GetComponentInChildren<HingeJoint2D>()));
         for (int i = 0; i < oldCurrentSize; ++i)
             AddNode();
@@ -61,8 +60,8 @@ public class                                        PlantPower : MonoBehaviour
 
     void                                            Start()
     {
-        pM.SetPollenGauge((int)pollenReserve);
-        wM.SetWaterGauge(waterReserve); 
+        this.pollenGauge.SetGauge((int)pollenReserve);
+        this.waterGauge.SetGauge(waterReserve); 
     }
 
     public void                                     AddNode()
@@ -118,6 +117,7 @@ public class                                        PlantPower : MonoBehaviour
         HingeJoint2D                                newLastJoint;
         GameObject                                  detachedHead;
 
+        if (this.currentSize < detachHeadSacrifice + 2) return;
         for (int i = 0; i < detachHeadSacrifice; ++i)
         {
             lastJoint = this.joints[this.joints.Count - 1];
@@ -183,19 +183,23 @@ public class                                        PlantPower : MonoBehaviour
             joint.limits = angles;
             joint.motor = motor;
         }
-        wM.SetWaterGauge(waterReserve);
         Danse();
     }
 
     void                                            LateUpdate()
     {
+        if (!this.controlled) return;
+        this.waterGauge.SetGauge(waterReserve);
+        this.pollenGauge.SetGauge(pollenReserve);
         this.momentum = this.transform.position - this.oldPosition;
         this.oldPosition = this.transform.position;
     }
 
-    public void                                     Initialize(WaterManagement waMa, PollenManagement PoMa)
+    public void                                     Initialize(CollectibleManagement waterGauge, CollectibleManagement pollenGauge)
     {
-        pM = PoMa;
-        wM = waMa;
+        this.waterGauge = waterGauge;
+        this.pollenGauge = pollenGauge;
+        this.waterReserve = waterGauge.GetValue();
+        this.pollenReserve = pollenGauge.GetValue();
     }
 }
