@@ -4,10 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public enum DifficultyEnum
+{
+    Easy,
+    Normal,
+    Hard
+}
+
 public class                        GameOver: MonoBehaviour
 {
     public static GameOver          instance;
 
+    public DifficultyEnum           difficultyMode;
     public Image                    deathBackground;
     public Color                    initialDeathBGColor;
     public Color                    finalDeathBGColor;
