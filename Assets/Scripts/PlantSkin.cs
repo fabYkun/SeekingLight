@@ -8,6 +8,6 @@ public class                    PlantSkin : ScriptableObject
     public Sprite               head;
     public Sprite               sprout;
     public Sprite               stem;
-    public List<Sprite>         leftLeafs = new List<Sprite>();
-    public List<Sprite>         rightLeafs = new List<Sprite>();
+    public Sprite               leftLeaf;
+    public Sprite               rightLeaf;
 }

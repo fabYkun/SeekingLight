@@ -14,7 +14,5 @@ MonoBehaviour:
   head: {fileID: 21300000, guid: 7aa82caa1aab93748b0d8f6681556761, type: 3}
   sprout: {fileID: 21300000, guid: a690bfc1e214d514185be2acd9066511, type: 3}
   stem: {fileID: 21300004, guid: a690bfc1e214d514185be2acd9066511, type: 3}
-  leftLeafs:
-  - {fileID: 21300002, guid: a690bfc1e214d514185be2acd9066511, type: 3}
-  rightLeafs:
-  - {fileID: 21300006, guid: a690bfc1e214d514185be2acd9066511, type: 3}
+  leftLeaf: {fileID: 21300002, guid: a690bfc1e214d514185be2acd9066511, type: 3}
+  rightLeaf: {fileID: 21300006, guid: a690bfc1e214d514185be2acd9066511, type: 3}

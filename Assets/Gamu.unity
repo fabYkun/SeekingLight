@@ -473,13 +473,24 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
         type: 2}
-      propertyPath: pollenReserve
-      value: 3
-      objectReference: {fileID: 0}
+      propertyPath: pM
+      value: 
+      objectReference: {fileID: 1989784305}
     - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
         type: 2}
-      propertyPath: distance
-      value: 0.2
+      propertyPath: wM
+      value: 
+      objectReference: {fileID: 1776386546}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: leafPrefab
+      value: 
+      objectReference: {fileID: 1870802265973644, guid: 863529cfa3cc97f46ba380b2b4980fd9,
+        type: 2}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: leafProbability
+      value: 27.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55e1fde6c7e7a3f4387071bb4743bd91, type: 2}
@@ -824,6 +835,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114732398952704162, guid: 89a3d6617bc9c2e449c31e0a1f825623,
+        type: 2}
+      propertyPath: pollens.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 224120599941554796, guid: 89a3d6617bc9c2e449c31e0a1f825623,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1102,6 +1118,41 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114118272737456912, guid: 89a3d6617bc9c2e449c31e0a1f825623,
+        type: 2}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114732398952704162, guid: 89a3d6617bc9c2e449c31e0a1f825623,
+        type: 2}
+      propertyPath: pollens.Array.data[0]
+      value: 
+      objectReference: {fileID: 31073131}
+    - target: {fileID: 114732398952704162, guid: 89a3d6617bc9c2e449c31e0a1f825623,
+        type: 2}
+      propertyPath: pollens.Array.data[1]
+      value: 
+      objectReference: {fileID: 588337235}
+    - target: {fileID: 114732398952704162, guid: 89a3d6617bc9c2e449c31e0a1f825623,
+        type: 2}
+      propertyPath: pollens.Array.data[2]
+      value: 
+      objectReference: {fileID: 1760798057}
+    - target: {fileID: 114732398952704162, guid: 89a3d6617bc9c2e449c31e0a1f825623,
+        type: 2}
+      propertyPath: pollens.Array.data[3]
+      value: 
+      objectReference: {fileID: 551105419}
+    - target: {fileID: 114732398952704162, guid: 89a3d6617bc9c2e449c31e0a1f825623,
+        type: 2}
+      propertyPath: pollens.Array.data[4]
+      value: 
+      objectReference: {fileID: 1595915974}
+    - target: {fileID: 114732398952704162, guid: 89a3d6617bc9c2e449c31e0a1f825623,
+        type: 2}
+      propertyPath: pollens.Array.data[5]
+      value: 
+      objectReference: {fileID: 1600297339}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89a3d6617bc9c2e449c31e0a1f825623, type: 2}
   m_IsPrefabParent: 0
@@ -1265,6 +1316,61 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1444629948}
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1776386546 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114671051752573870, guid: 89a3d6617bc9c2e449c31e0a1f825623,
+    type: 2}
+  m_PrefabInternal: {fileID: 1444629948}
+  m_Script: {fileID: 11500000, guid: 32953b09d6002e64199cf7f3fa6825ce, type: 3}
+--- !u!1 &1896913173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1896913175}
+  - component: {fileID: 1896913174}
+  m_Layer: 0
+  m_Name: Collectibles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1896913174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1896913173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719ae7b6a33a7dd48b9bca9ca7d6d2c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 30, y: 2, z: 1.5}
+  waterPrefab: {fileID: 0}
+  pollenPrefab: {fileID: 0}
+--- !u!4 &1896913175
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1896913173}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1989784305 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114732398952704162, guid: 89a3d6617bc9c2e449c31e0a1f825623,
+    type: 2}
+  m_PrefabInternal: {fileID: 1444629948}
+  m_Script: {fileID: 11500000, guid: 24e217a1dc4e31142b1f64c36fe8c7e0, type: 3}
 --- !u!1 &2076168701
 GameObject:
   m_ObjectHideFlags: 0
