@@ -72,6 +72,7 @@ public class                Seed: MonoBehaviour
             Destroy(this.gameObject);
             this.hasGerminated = true;
         }
+        else if(col.gameObject.tag == "pierre" && !this.hasGerminated) { }
         else if (this.pollenReserve <= 0)
         {
             this.pP.controlled = true;

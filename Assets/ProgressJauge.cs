@@ -8,6 +8,7 @@ public class ProgressJauge: MonoBehaviour {
     public Image soleilIcon, plantIcon;
     public Transform cam, sol;
     public float startJauge, endJauge, startReal, endReal;
+    public float adjustLight;
 
     // Update is called once per frame
     void Update ( ) {
@@ -17,12 +18,12 @@ public class ProgressJauge: MonoBehaviour {
         float percCam = pozCam/tmp; // pourcentage de la position de la camera
         //print ("percCam " + percCam);
         float jaugePercCam = ( endJauge - startJauge ) * percCam; //nombre de pixel de la jauge a parcourir
-        print(jaugePercCam);
-        print(startJauge);
+        //print(jaugePercCam);
+        //print(startJauge);
         Vector3 plantPoz = new Vector3 (startJauge + jaugePercCam, plantIcon.transform.localPosition.y, plantIcon.transform.localPosition.z);
         plantIcon.transform.localPosition = plantPoz;
 
-        float pozSol = sol.position.x - startReal;
+        float pozSol = sol.position.x - startReal+ adjustLight;
         float percSol = pozSol/tmp;
                 //print ("percsol " + percSol);
 
