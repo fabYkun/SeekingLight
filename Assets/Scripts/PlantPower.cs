@@ -14,6 +14,7 @@ public class                                        PlantPower : MonoBehaviour
     private HingeJoint2D                            head;
 
     public int                                      size;
+    public int                                      maxSize;
     public int                                      detachHeadSacrifice = 6;
     [Range(0, 100)]
     public float                                    leafProbability = 25;
@@ -66,6 +67,7 @@ public class                                        PlantPower : MonoBehaviour
         HingeJoint2D                                lastJoint = this.joints[this.joints.Count - 1];
         HingeJoint2D                                currentJoint;
 
+        if (this.size + 1 > this.maxSize) return;
         tmp = Instantiate(nodePrefab, Vector3.zero, Quaternion.identity);
         tmp.GetComponent<SpriteRenderer>().sprite = this.skin.head;
         tmp.transform.SetParent(this.transform);
@@ -91,6 +93,7 @@ public class                                        PlantPower : MonoBehaviour
             leaf.transform.localPosition = Vector3.zero;
             this.noLeafSince = 0;
         }
+        ++this.size;
     }
 
     IEnumerator                                     scaleUp(Transform transform, Vector3 from, Vector3 to, float duration)

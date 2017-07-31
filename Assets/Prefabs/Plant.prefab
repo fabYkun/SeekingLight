@@ -110,8 +110,10 @@ MonoBehaviour:
   leafPrefab: {fileID: 1870802265973644, guid: 863529cfa3cc97f46ba380b2b4980fd9, type: 2}
   skin: {fileID: 11400000, guid: b4a8b70277da37c4eba2bfe0afb091dd, type: 2}
   size: 6
+  maxSize: 30
   detachHeadSacrifice: 6
   leafProbability: 27.4
+  maximalLeafGap: 5
   distance: 0.2
   elasticity: 50
   rigidDistribution:

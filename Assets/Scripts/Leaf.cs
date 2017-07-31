@@ -17,7 +17,11 @@ public class                        Leaf : MonoBehaviour
     void                            OnCollisionEnter2D(Collision2D collider)
     {
         if (collider.gameObject.CompareTag("collectiblePollen")) this.plant.pollenReserve += this.pollenAmount;
-        if (collider.gameObject.CompareTag("collectibleWater")) this.plant.waterReserve += this.waterAmount;
+        if (collider.gameObject.CompareTag("collectibleWater"))
+        {
+            this.plant.AddNode();
+            this.plant.waterReserve += this.waterAmount;
+        }
         if (collider.gameObject.CompareTag("collectiblePollen") || collider.gameObject.CompareTag("collectibleWater")) Destroy(collider.gameObject);
     }
 }
