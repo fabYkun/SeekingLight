@@ -57,6 +57,7 @@ MonoBehaviour:
   pollenPrefab: {fileID: 1172815767134598, guid: d99482a379bb0354ab08394b83f0ceaf,
     type: 2}
   rainAngle: -20
-  rainForce: 2.5
-  waterPercentage: 2
-  pollenPercentage: 1
+  rainForce: 2
+  waterPercentage: 20
+  pollenPercentage: 10
+  timer: 30
