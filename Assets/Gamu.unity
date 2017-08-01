@@ -13188,7 +13188,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 478963015}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.418674, y: 0.37560987, z: 0}
+  m_LocalPosition: {x: 11.418674, y: 0.37560987, z: -1.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1498837947}
@@ -23266,6 +23266,11 @@ Prefab:
       propertyPath: waterGauge
       value: 
       objectReference: {fileID: 583003354}
+    - target: {fileID: 114418877486181812, guid: 55e1fde6c7e7a3f4387071bb4743bd91,
+        type: 2}
+      propertyPath: cheat
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55e1fde6c7e7a3f4387071bb4743bd91, type: 2}
   m_IsPrefabParent: 0

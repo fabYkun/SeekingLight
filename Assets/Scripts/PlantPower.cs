@@ -5,6 +5,8 @@ using UnityEngine;
 public class                                        PlantPower : MonoBehaviour
 {
     public bool                                     controlled = true;      // current plant under control
+    [SerializeField]
+    private bool                                    cheat = false;
     public GameObject                               nodePrefab;
     public GameObject                               detachedHeadPrefab;
     public GameObject                               leafPrefab;
@@ -174,9 +176,9 @@ public class                                        PlantPower : MonoBehaviour
         else
             this.currentForce = Vector3.SmoothDamp(this.currentForce, Vector3.zero, ref this.forceVelocity, this.swapDelay);
 
-        if (Input.GetButtonDown("Spawn"))
+        if (Input.GetButtonDown("Spawn") && this.cheat)
             this.AddNode();
-        else if (Input.GetButtonDown("Propulse"))
+        if (Input.GetButtonDown("Propulse"))
             this.DetachHead();
     }
     
