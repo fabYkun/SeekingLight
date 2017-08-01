@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Gamu.unity
     guid: 7362c8a3f6eaabc4db01095ee5cf4851
+  - enabled: 1
+    path: Assets/credits.unity
+    guid: 701eed58302b3844db544063e77ddf33

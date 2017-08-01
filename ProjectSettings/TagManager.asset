@@ -10,6 +10,7 @@ TagManager:
   - pierre
   - collectibleWater
   - collectiblePollen
+  - player
   layers:
   - Default
   - TransparentFX

@@ -58,6 +58,6 @@ MonoBehaviour:
     type: 2}
   rainAngle: -20
   rainForce: 2
-  waterPercentage: 30
-  pollenPercentage: 15
+  waterPercentage: 20
+  pollenPercentage: 10
   timer: 15
