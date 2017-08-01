@@ -14,9 +14,21 @@ public class                        Leaf : MonoBehaviour
         this.plant = plant;
     }
 
+    public void                     Initialize(PlantPower plant, float newWaterAmount, float newPollenAmount)
+    {
+        this.plant = plant;
+        this.waterAmount = newWaterAmount;
+        this.pollenAmount = newPollenAmount;
+    }
+
     void                            OnCollisionEnter2D(Collision2D collider)
     {
-        if (collider.gameObject.CompareTag("collectiblePollen")) { this.plant.pollenReserve += this.pollenAmount; if (this.plant.pollenReserve >100) this.plant.pollenReserve = 100;}
+        if (collider.gameObject.CompareTag("collectiblePollen")) {
+            Debug.Log(this.plant.pollenReserve + " + " + this.pollenAmount);
+            this.plant.pollenReserve += this.pollenAmount;
+            Debug.Log("=" + this.plant.pollenReserve);
+            if (this.plant.pollenReserve >100) this.plant.pollenReserve = 100;
+        }
         if (collider.gameObject.CompareTag("collectibleWater"))
         {
             this.plant.AddNode();

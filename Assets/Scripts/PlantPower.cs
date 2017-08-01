@@ -59,6 +59,8 @@ public class                                        PlantPower : MonoBehaviour
     public CollectibleManagement                    waterGauge;
     public float                                    pollenReserve;
     public float                                    waterReserve;
+    public float                                    waterAmount = 1;
+    public float                                    pollenAmount = 1;
 
     void                                            Awake()
     {
@@ -102,7 +104,7 @@ public class                                        PlantPower : MonoBehaviour
         Destroy(lastJoint.GetComponent<Leaf>());
         this.head = currentJoint;
         this.head.gameObject.AddComponent<PolygonCollider2D>();
-        this.head.gameObject.AddComponent<Leaf>().Initialize(this);
+        this.head.gameObject.AddComponent<Leaf>().Initialize(this, this.waterAmount, this.pollenAmount);
         this.joints.Add(currentJoint);
         if (Random.Range(0, 100) < this.leafProbability || ++this.noLeafSince > this.maximalLeafGap)
         {
