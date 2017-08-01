@@ -24,10 +24,9 @@ public class                        Leaf : MonoBehaviour
     void                            OnCollisionEnter2D(Collision2D collider)
     {
         if (collider.gameObject.CompareTag("collectiblePollen")) {
-            Debug.Log(this.plant.pollenReserve + " + " + this.pollenAmount);
             this.plant.pollenReserve += this.pollenAmount;
-            Debug.Log("=" + this.plant.pollenReserve);
             if (this.plant.pollenReserve >100) this.plant.pollenReserve = 100;
+            this.plant.PollenAudio.Play(this.plant.audioSource);
         }
         if (collider.gameObject.CompareTag("collectibleWater"))
         {

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a9f940313d06d4caed9863bf024ebf, type: 3}
+  m_Name: Pollen
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: ce9af2b5ece2c8a4fb03ad14e50ea15e, type: 3}
+  - {fileID: 8300000, guid: b2e78148adf894a4a93de51bf8a23707, type: 3}
+  - {fileID: 8300000, guid: 99d669a1a13cb8847b91975dc0217ede, type: 3}
+  - {fileID: 8300000, guid: 0b1746f45412df34ba6b6d946767dc7c, type: 3}
+  volume:
+    minValue: 0.15686277
+    maxValue: 0.35294116
+  pitch:
+    minValue: 1.6862745
+    maxValue: 2

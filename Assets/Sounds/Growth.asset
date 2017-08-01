@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a9f940313d06d4caed9863bf024ebf, type: 3}
+  m_Name: Growth
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 7efad9f9d6806f94e8bca10d45539ff7, type: 3}
+  - {fileID: 8300000, guid: dc362d1c3c36046498d410533b9a59c2, type: 3}
+  - {fileID: 8300000, guid: dd2d008d5cd7c5a4d81442f74bc4de4f, type: 3}
+  - {fileID: 8300000, guid: 19860ea3dd827a748b7fac580c207228, type: 3}
+  - {fileID: 8300000, guid: 3369d449c4266a442adf8f1a92f85aec, type: 3}
+  - {fileID: 8300000, guid: 1f80977fb79351a469f6267edc249251, type: 3}
+  volume:
+    minValue: 0.80392164
+    maxValue: 1
+  pitch:
+    minValue: 1.2941177
+    maxValue: 1.6078433

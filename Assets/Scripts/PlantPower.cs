@@ -62,11 +62,17 @@ public class                                        PlantPower : MonoBehaviour
     public float                                    waterAmount = 1;
     public float                                    pollenAmount = 1;
 
+    public SimpleAudioEvent                         GrowthAudio;
+    public SimpleAudioEvent                         PollenAudio;
+    public SimpleAudioEvent                         EjectAudio;
+    public AudioSource                              audioSource;
+
     void                                            Awake()
     {
         int                                         controlledNodes = this.controlledNodes;
         int                                         oldCurrentSize = this.currentSize;
 
+        this.audioSource = this.GetComponent<AudioSource>();
         this.skin = this.defaultSkin;
         this.currentSize = 0;
         this.joints.Add((this.head = this.GetComponentInChildren<HingeJoint2D>()));
@@ -90,6 +96,7 @@ public class                                        PlantPower : MonoBehaviour
         HingeJoint2D                                currentJoint;
 
         if (this.currentSize + 1 > this.maxSize) return;
+        this.GrowthAudio.Play(this.audioSource);
         tmp = Instantiate(nodePrefab, Vector3.zero, Quaternion.identity);
         tmp.GetComponent<SpriteRenderer>().sprite = this.skin.head;
         tmp.transform.SetParent(this.transform);
@@ -137,6 +144,7 @@ public class                                        PlantPower : MonoBehaviour
         GameObject                                  detachedHead;
 
         if (this.currentSize < detachHeadSacrifice + 2) return;
+        this.EjectAudio.Play(this.audioSource);
         detachedHead = Instantiate(detachedHeadPrefab, this.head.transform.position, Quaternion.identity);
         detachedHead.transform.up = this.head.transform.up;
         detachedHead.GetComponent<Rigidbody2D>().AddForce(this.momentum * 4, ForceMode2D.Impulse);
@@ -231,6 +239,7 @@ public class                                        PlantPower : MonoBehaviour
         this.pollenGauge.SetGauge(pollenReserve);
         this.momentum = this.head.transform.position - this.oldPosition;
         this.oldPosition = this.head.transform.position;
+        if (this.waterReserve <= 0) GameOver.instance.LaunchGameover();
     }
 
     public void                                     Initialize(CollectibleManagement waterGauge, CollectibleManagement pollenGauge)

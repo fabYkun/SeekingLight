@@ -49,9 +49,9 @@ public class                Seed: MonoBehaviour
     void                    Rotation()
     {
         if ( Input.GetButton ("Left") )
-            rb2d.AddTorque (rotationSpeed);
+            rb2d.AddTorque (rotationSpeed * (this.pollenReserve <= 0 ? 10 : 1));
         if ( Input.GetButton ("Right") )
-            rb2d.AddTorque (-rotationSpeed);
+            rb2d.AddTorque (-rotationSpeed * (this.pollenReserve <= 0 ? 10 : 1));
     }
 
     public void             Initialize(PlantPower plPo)

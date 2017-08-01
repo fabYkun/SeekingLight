@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4574928086596808}
   - component: {fileID: 114418877486181812}
+  - component: {fileID: 82275632058980570}
   m_Layer: 8
   m_Name: Plant
   m_TagString: player
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496845113467740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.36, y: -3.16, z: 0}
+  m_LocalPosition: {x: 19, y: -3.3, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4879144229885484}
@@ -92,6 +93,86 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!82 &82275632058980570
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1496845113467740}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114418877486181812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,7 +197,7 @@ MonoBehaviour:
   currentSize: 3
   maxSize: 30
   detachHeadSacrifice: 6
-  waterConsumptionPerSec: 1.5
+  waterConsumptionPerSec: 10
   maxSizeRatioWaterConsumtion:
     serializedVersion: 2
     m_Curve:
@@ -187,8 +268,12 @@ MonoBehaviour:
   waterGauge: {fileID: 0}
   pollenReserve: 100
   waterReserve: 100
-  waterAmount: 1
+  waterAmount: 20
   pollenAmount: 15
+  GrowthAudio: {fileID: 11400000, guid: 9adb3ca3b4b6a4940802041f74269aff, type: 2}
+  PollenAudio: {fileID: 11400000, guid: 07f660aeb6b2ed040900b062003d2ebb, type: 2}
+  EjectAudio: {fileID: 11400000, guid: e12a19bb0e10f884cbb89b05e5d79c2a, type: 2}
+  audioSource: {fileID: 82275632058980570}
 --- !u!212 &212130390111157992
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -245,7 +330,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 17.36, y: -3.16}
+  m_ConnectedAnchor: {x: 19, y: -3.3}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

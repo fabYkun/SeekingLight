@@ -52,7 +52,7 @@ public class                        GameOver: MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void                     LaunchGameover()
