@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plant: {fileID: 0}
   waterAmount: 1
-  pollenAmount: 1000000
+  pollenAmount: 15
 --- !u!212 &212483132999894234
 SpriteRenderer:
   m_ObjectHideFlags: 1

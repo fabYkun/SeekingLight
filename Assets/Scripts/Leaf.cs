@@ -33,6 +33,8 @@ public class                        Leaf : MonoBehaviour
         {
             this.plant.AddNode();
             this.plant.waterReserve += this.waterAmount;
+                        if (this.plant.waterReserve >100) this.plant.waterReserve = 100;
+
         }
         if (collider.gameObject.CompareTag("collectiblePollen") || collider.gameObject.CompareTag("collectibleWater")) Destroy(collider.gameObject);
     }
